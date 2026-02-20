@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto+Mono:wght@400&display=swap');
+
+:root {
+    --primary-color: #3498db;
+    --secondary-color: #2ecc71;
+    --accent-color: #9b59b6;
+    --bg-light: #f4f4f4;
+    --bg-dark: #1e1e1e;
+    --text-light: #333;
+    --text-dark: #ddd;
+    --shadow: rgba(0, 0, 0, 0.1);
+    --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: var(--bg-light) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="%233498db" stroke-width="2" opacity="0.1"/><rect x="20" y="20" width="60" height="60" fill="none" stroke="%232ecc71" stroke-width="2" opacity="0.1"/></svg>') repeat;
+    color: var(--text-light);
+    transition: background 0.3s, color 0.3s;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body.dark-mode {
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="%233498db" stroke-width="2" opacity="0.2"/><rect x="20" y="20" width="60" height="60" fill="none" stroke="%232ecc71" stroke-width="2" opacity="0.2"/></svg>') repeat;
+}
+
+h1 {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-shadow: 1px 1px 2px var(--shadow);
+    animation: fadeIn 1s ease-in-out;
+}
+
+section {
+    margin: 30px 0;
+    padding: 25px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px var(--shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+body.dark-mode section {
+    background: #2c2c2c;
+}
+
+section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px var(--shadow);
+}
+
+h2 {
+    color: var(--secondary-color);
+    font-size: 1.8em;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: var(--gradient);
+    transition: width 0.3s;
+}
+
+h2:hover::after {
+    width: 100px;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+ul li {
+    margin: 10px 0;
+    padding: 10px;
+    background: rgba(52, 152, 219, 0.1);
+    border-radius: 8px;
+    transition: background 0.3s;
+    position: relative;
+    padding-left: 30px;
+}
+
+body.dark-mode ul li {
+    background: rgba(52, 152, 219, 0.2);
+}
+
+ul li::before {
+    content: '\1F4BB';
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    font-size: 1.2em;
+}
+
+ul li:hover {
+    background: rgba(52, 152, 219, 0.2);
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: var(--primary-color);
+    text-decoration: underline wavy;
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 0.9em;
+    color: #777;
+}
+
+body.dark-mode footer {
+    color: #aaa;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 200px;
+    height: 200px;
+    background: var(--gradient);
+    border-radius: 50%;
+    opacity: 0.2;
+    animation: float 6s infinite ease-in-out;
+    z-index: -1;
+}
+
+body::after {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    left: -100px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, var(--accent-color), transparent);
+    opacity: 0.15;
+    animation: float 8s infinite ease-in-out reverse;
+    z-index: -1;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(20px, 20px); }
+    100% { transform: translate(0, 0); }
+}
+#darkModeToggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    z-index: 10;
+}
+
+#darkModeToggle:hover {
+    background: var(--secondary-color);
+}
+
+@media (max-width: 768px) {
+    h1 { font-size: 2em; }
+    section { padding: 15px; }
+    ul li { font-size: 0.9em; }
+}
